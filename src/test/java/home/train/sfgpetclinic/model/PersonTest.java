@@ -1,9 +1,11 @@
 package home.train.sfgpetclinic.model;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Tag("model")
 class PersonTest {
 
     @Test
@@ -18,7 +20,7 @@ class PersonTest {
     void testSensitiveStringProperty() {
         Person person = new Person(1l, "John", "Doe");
         assertAll("test sensitive String property",
-                () -> assertEquals("john", person.getFirstName(), "Failed cause Sensitive"),
+                () -> assertEquals("John", person.getFirstName(), "Failed cause Sensitive"),
                 () -> assertEquals("doe", person.getLastName(), "failed cause sensitive"));
     }
 }
