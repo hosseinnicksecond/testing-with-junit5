@@ -3,6 +3,7 @@ package home.train.sfgpetclinic.model;
 import home.train.sfgpetclinic.ModelTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,6 +32,13 @@ class OwnerTest implements ModelTest {
     @ValueSource(strings = {"hello","world","junit"})
     void parameterizedMethod(String value){
         System.out.println(value);
+    }
+
+    @DisplayName("Enum Source Type")
+    @ParameterizedTest(name = "{displayName} - [{index}] : {arguments}")
+    @EnumSource(PersonType.class)
+    void EnumTest(PersonType type){
+        System.out.println(type);
     }
 
 
