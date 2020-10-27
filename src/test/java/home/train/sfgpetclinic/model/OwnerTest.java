@@ -3,6 +3,7 @@ package home.train.sfgpetclinic.model;
 import home.train.sfgpetclinic.ModelTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -52,6 +53,10 @@ class OwnerTest implements ModelTest {
     void csvTest(String city,int val1,int val2){
         System.out.println(city+" : "+ val1+" - "+val2);
     }
-
-
+    @DisplayName("SCV file source test")
+    @ParameterizedTest(name = "{displayName} - [{index}] : {arguments}")
+    @CsvFileSource(resources = "/index.csv",numLinesToSkip = 1)
+    void ScvFileTest(String name,int value1,int value2){
+        System.out.println(name+" ==> "+value1+" : "+value2);
+    }
 }
