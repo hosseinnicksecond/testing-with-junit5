@@ -2,6 +2,8 @@ package home.train.sfgpetclinic.model;
 
 import home.train.sfgpetclinic.ModelTest;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,6 +24,13 @@ class OwnerTest implements ModelTest {
                         () -> assertEquals("Key West", owner.getCity(), "city name dose not match"),
                         () -> assertEquals("12345 678", owner.getTelephone(), "telephone not match"))
         );
+    }
+
+    @DisplayName("Value Source Test - ")
+    @ParameterizedTest(name = "{displayName} - [{index}] {arguments}")
+    @ValueSource(strings = {"hello","world","junit"})
+    void parameterizedMethod(String value){
+        System.out.println(value);
     }
 
 
