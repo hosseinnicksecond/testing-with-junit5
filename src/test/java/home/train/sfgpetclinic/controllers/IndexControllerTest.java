@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.*;
 
 import java.time.Duration;
 
@@ -49,7 +50,7 @@ class IndexControllerTest {
             System.out.println("this from TimeoutPreemptively");
         });
     }
-
+    @Disabled("just for test")
     @Test
     void assumptionTest() {
         assumeTrue("JOHN".equalsIgnoreCase(System.getenv("JOHN")));
@@ -59,4 +60,26 @@ class IndexControllerTest {
     void assumptionTest2() {
         assumeTrue("John".equalsIgnoreCase("john"));
     }
+
+    @EnabledOnOs(OS.LINUX)
+    @Test
+    void RunOnOS() {
+    }
+    @EnabledOnOs(OS.WINDOWS)
+    @Test
+    void justRunOnWindows() {
+    }
+    @EnabledOnJre(JRE.JAVA_8)
+    @Test
+    void runOnJava8() {
+    }
+    @EnabledOnJre(JRE.JAVA_11)
+    @Test
+    void runOnJava11() {
+    }
+    @EnabledIfEnvironmentVariable(named = "USER",matches = "hossein")
+    @Test
+    void RunWithUserHossein() {
+    }
+
 }
