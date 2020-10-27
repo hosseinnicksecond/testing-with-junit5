@@ -1,6 +1,7 @@
 package home.train.sfgpetclinic.controllers;
 
-import home.train.sfgpetclinic.fauxSpring;
+import home.train.sfgpetclinic.ControllerTest;
+import home.train.sfgpetclinic.model.fauxSpring;
 import home.train.sfgpetclinic.fauxspring.Model;
 import home.train.sfgpetclinic.model.Vet;
 import home.train.sfgpetclinic.services.SpecialtyService;
@@ -15,8 +16,8 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Tag("controller")
-class VetControllerTest {
+//@Tag("controller")
+class VetControllerTest implements ControllerTest {
     VetController controller;
     VetService service;
     SpecialtyService specialtyService;

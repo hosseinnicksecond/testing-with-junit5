@@ -1,5 +1,6 @@
 package home.train.sfgpetclinic.controllers;
 
+import home.train.sfgpetclinic.ControllerTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.*;
 
@@ -9,8 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
-@Tag("controller")
-class IndexControllerTest {
+//@Tag("controller")
+class IndexControllerTest implements ControllerTest {
 
     IndexController controller;
 

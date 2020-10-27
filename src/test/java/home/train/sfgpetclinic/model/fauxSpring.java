@@ -1,4 +1,4 @@
-package home.train.sfgpetclinic;
+package home.train.sfgpetclinic.model;
 
 import home.train.sfgpetclinic.fauxspring.Model;
 
