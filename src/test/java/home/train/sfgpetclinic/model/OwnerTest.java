@@ -3,6 +3,7 @@ package home.train.sfgpetclinic.model;
 import home.train.sfgpetclinic.ModelTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -39,6 +40,17 @@ class OwnerTest implements ModelTest {
     @EnumSource(PersonType.class)
     void EnumTest(PersonType type){
         System.out.println(type);
+    }
+
+    @DisplayName("SCV Source test ")
+    @ParameterizedTest(name="{displayName} - [{index}] : {arguments}")
+    @CsvSource({
+            "TE,21,98",
+            "DC,15,01",
+            "PA,14,22"
+    })
+    void csvTest(String city,int val1,int val2){
+        System.out.println(city+" : "+ val1+" - "+val2);
     }
 
 
