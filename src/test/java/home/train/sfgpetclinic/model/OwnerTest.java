@@ -24,15 +24,5 @@ class OwnerTest implements ModelTest {
         );
     }
 
-    @RepeatedTest(value = 10,name = "{displayName} : {currentRepetition} - {totalRepetitions}")
-    @DisplayName("repeated test")
-    void repeatedTest() {
-        System.out.println("hello");
-    }
 
-    @RepeatedTest(5)
-    @DisplayName("junit dependency injection")
-    void repeatedTestWithParameter(TestInfo testInfo,RepetitionInfo repetitionInfo){
-        System.out.println(testInfo.getDisplayName()+" : "+repetitionInfo.getCurrentRepetition());
-    }
 }

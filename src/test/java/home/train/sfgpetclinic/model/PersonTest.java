@@ -1,13 +1,14 @@
 package home.train.sfgpetclinic.model;
 
 import home.train.sfgpetclinic.ModelTest;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 //@Tag("model")
 class PersonTest implements ModelTest {
+
+    String displayName;
 
     @Test
     void testEqualProperty() {
@@ -24,4 +25,5 @@ class PersonTest implements ModelTest {
                 () -> assertEquals("John", person.getFirstName(), "Failed cause Sensitive"),
                 () -> assertEquals("doe", person.getLastName(), "failed cause sensitive"));
     }
+
 }
