@@ -1,10 +1,7 @@
 package home.train.sfgpetclinic.model;
 
 import home.train.sfgpetclinic.ModelTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,8 +26,13 @@ class OwnerTest implements ModelTest {
 
     @RepeatedTest(value = 10,name = "{displayName} : {currentRepetition} - {totalRepetitions}")
     @DisplayName("repeated test")
-    @Test
     void repeatedTest() {
         System.out.println("hello");
+    }
+
+    @RepeatedTest(5)
+    @DisplayName("junit dependency injection")
+    void repeatedTestWithParameter(TestInfo testInfo,RepetitionInfo repetitionInfo){
+        System.out.println(testInfo.getDisplayName()+" : "+repetitionInfo.getCurrentRepetition());
     }
 }
