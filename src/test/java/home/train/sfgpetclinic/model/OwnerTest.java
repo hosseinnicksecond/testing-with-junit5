@@ -1,5 +1,6 @@
 package home.train.sfgpetclinic.model;
 
+import home.train.sfgpetclinic.CustomProvider;
 import home.train.sfgpetclinic.ModelTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -73,5 +74,12 @@ class OwnerTest implements ModelTest {
                 Arguments.of("name2",25,7),
                 Arguments.of("name3",2,14)
         );
+    }
+
+    @DisplayName("Custom provider from class")
+    @ParameterizedTest(name = "{displayName} - [{index}] : {arguments}")
+    @ArgumentsSource(CustomProvider.class)
+    void fromClassCustomerProvider(String name,int v1,int v2){
+        System.out.println(name+" : "+v1+" : "+v2);
     }
 }
