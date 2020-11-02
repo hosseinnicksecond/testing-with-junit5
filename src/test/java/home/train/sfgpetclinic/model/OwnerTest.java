@@ -3,10 +3,9 @@ package home.train.sfgpetclinic.model;
 import home.train.sfgpetclinic.ModelTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,32 +30,48 @@ class OwnerTest implements ModelTest {
 
     @DisplayName("Value Source Test - ")
     @ParameterizedTest(name = "{displayName} - [{index}] {arguments}")
-    @ValueSource(strings = {"hello","world","junit"})
-    void parameterizedMethod(String value){
+    @ValueSource(strings = {"hello", "world", "junit"})
+    void parameterizedMethod(String value) {
         System.out.println(value);
     }
 
     @DisplayName("Enum Source Type")
     @ParameterizedTest(name = "{displayName} - [{index}] : {arguments}")
     @EnumSource(PersonType.class)
-    void EnumTest(PersonType type){
+    void EnumTest(PersonType type) {
         System.out.println(type);
     }
 
     @DisplayName("SCV Source test ")
-    @ParameterizedTest(name="{displayName} - [{index}] : {arguments}")
+    @ParameterizedTest(name = "{displayName} - [{index}] : {arguments}")
     @CsvSource({
             "TE,21,98",
             "DC,15,01",
             "PA,14,22"
     })
-    void csvTest(String city,int val1,int val2){
-        System.out.println(city+" : "+ val1+" - "+val2);
+    void csvTest(String city, int val1, int val2) {
+        System.out.println(city + " : " + val1 + " - " + val2);
     }
+
     @DisplayName("SCV file source test")
     @ParameterizedTest(name = "{displayName} - [{index}] : {arguments}")
-    @CsvFileSource(resources = "/index.csv",numLinesToSkip = 1)
-    void ScvFileTest(String name,int value1,int value2){
-        System.out.println(name+" ==> "+value1+" : "+value2);
+    @CsvFileSource(resources = "/index.csv", numLinesToSkip = 1)
+    void ScvFileTest(String name, int value1, int value2) {
+        System.out.println(name + " ==> " + value1 + " : " + value2);
+    }
+
+    @DisplayName("Method provider test")
+    @ParameterizedTest(name = "{displayName} - [{index}] : {arguments}")
+    @MethodSource("getArgs")
+    void fromMethodSource(String name, int value1, int value2) {
+        System.out.println(name + " : " + value1 + " : " + value2);
+    }
+
+    static Stream<Arguments> getArgs() {
+        return Stream.of(
+                Arguments.of("name1",22,23),
+                Arguments.of("name2",25,7),
+                Arguments.of("name3",2,14)
+        );
     }
 }
